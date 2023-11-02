@@ -1,0 +1,60 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="index">
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-cell *matCellDef="let element; let i=index"> {{i+1}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="icons">
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <img *ngIf="element.team && element.team.logo" [src]="element.team.logo" alt="teamIcon.logo" width="30"
+        height="30">
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Name </mat-header-cell>
+    <mat-cell *matCellDef="let element" (click)="individualTeamDetails(element, element.team.id)" class="nameColumn">
+      {{element.team.name}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="games">
+    <mat-header-cell *matHeaderCellDef> G </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.all.played}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="wins">
+    <mat-header-cell *matHeaderCellDef> W </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.all.win }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="loses">
+    <mat-header-cell *matHeaderCellDef> L </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.all.lose }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="draw">
+    <mat-header-cell *matHeaderCellDef> D</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.all.draw }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="goalDiff">
+    <mat-header-cell *matHeaderCellDef> Goals Diff </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.goalsDiff}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="points">
+    <mat-header-cell *matHeaderCellDef> Points </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.points}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+
+<div *ngIf="showIndividualData">
+  <span>
+    I attempted to capture and display real-time data within a table; however, it displayed as empty. The captured
+    response has been stored in a 'liveData.JSON' file for your review.</span>
+</div>

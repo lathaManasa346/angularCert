@@ -1,0 +1,15 @@
+<nav class="header">
+    <ul>
+        <li><a routerLink="/countryEngland" #englandSelect>England</a></li>
+        <li><a routerLink="/countrySpain" #spainSelect>Spain</a></li>
+        <li><a routerLink="/countryGermany" #germanySelect>Germany</a></li>
+        <li><a routerLink="/countryFrance" #franceSelect>France</a></li>
+        <li><a routerLink="/countryItaly" #italySelect>Italy</a></li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+<button (click) = "previousPage()"> BACK </button>
+
